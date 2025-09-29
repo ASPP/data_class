@@ -1,0 +1,36 @@
+Timing data class ASPP 2025 Plovdiv
+(times are approx.)
+
+10:00 start intro
+
+10:10 start big O notation, several questions
+
+around 10:30, start exercise 1,
+until around 10:50
+
+10:50 numpy, intro + views and copies
+
+11:20 until 11:30  self-paced exercise on views and copies
+
+11:30 - 12:00 coffee break
+
+12:00 - 12:15  *how python works*. names and allocation in memory. 
+This was quickly explained, as there was much confusion about variables,
+in particular in the robust_log example function.
+
+12:15 - 12:30 - brodcasting. We only explained it, we did not have time 
+for the exercise.
+
+12:30 - start tabular data, general and joins + live coding
+
+12:40 - 13:15 - exercise joins
+
+13:15 - 13:25  split-apply-combine operations. Code of live coding was shown, not coded
+
+13:25 - 13:45  exercise split apply combine
+
+13:50 - notion of window functions was shown, no live coding. No time for exercise
+but it was mentioned that operating and returning result per row is possible
+
+wrap up, end 14:00
+
