@@ -1,0 +1,401 @@
+patient-id,group,sex_age,smoke_never,smoke_former,smoke_current,event
+1325,MedDiet + VOO,Male_72,0,0,1,0
+1326,Control,Female_69,1,0,0,0
+1327,MedDiet + Nuts,Female_64,0,1,0,0
+1328,Control,Female_70,1,0,0,0
+1329,MedDiet + VOO,Male_65,0,1,0,0
+1330,Control,Male_58,0,0,1,0
+1331,Control,Female_70,1,0,0,0
+1332,Control,Male_69,0,0,1,0
+1333,MedDiet + Nuts,Female_69,1,0,0,0
+1334,Control,Male_70,1,0,0,0
+1335,MedDiet + VOO,Female_68,1,0,0,0
+1336,Control,Female_71,1,0,0,0
+1337,MedDiet + Nuts,Male_73,1,0,0,0
+1338,MedDiet + VOO,Female_71,1,0,0,0
+1339,Control,Female_68,0,1,0,0
+1340,MedDiet + VOO,Male_79,1,0,0,0
+1341,Control,Male_58,0,1,0,0
+1342,Control,Male_67,1,0,0,0
+1343,Control,Male_71,0,1,0,0
+1344,Control,Female_59,1,0,0,0
+1345,MedDiet + Nuts,Male_75,0,1,0,0
+1346,MedDiet + VOO,Male_71,0,1,0,0
+1347,MedDiet + Nuts,Female_69,1,0,0,0
+1348,MedDiet + Nuts,Female_64,1,0,0,1
+1349,Control,Female_78,1,0,0,0
+1350,Control,Male_69,0,0,1,0
+1351,MedDiet + Nuts,Male_71,0,1,0,0
+1352,Control,Male_55,0,1,0,0
+1353,MedDiet + Nuts,Female_72,1,0,0,0
+1354,MedDiet + Nuts,Female_65,1,0,0,0
+1355,MedDiet + VOO,Male_57,0,0,1,0
+1356,MedDiet + VOO,Male_65,1,0,0,0
+1357,Control,Male_60,0,0,1,0
+1358,Control,Male_61,1,0,0,0
+1359,MedDiet + VOO,Female_65,1,0,0,0
+1360,MedDiet + Nuts,Male_70,1,0,0,0
+1361,MedDiet + VOO,Female_75,1,0,0,0
+1362,MedDiet + Nuts,Male_64,0,1,0,0
+1363,MedDiet + Nuts,Male_75,0,1,0,0
+1364,MedDiet + VOO,Female_74,1,0,0,1
+1365,MedDiet + VOO,Male_65,0,0,1,0
+1366,MedDiet + VOO,Female_71,1,0,0,0
+1367,MedDiet + Nuts,Female_64,1,0,0,0
+1368,Control,Female_64,1,0,0,0
+1369,MedDiet + VOO,Female_70,1,0,0,0
+1370,MedDiet + Nuts,Female_76,1,0,0,0
+1371,MedDiet + VOO,Male_64,0,0,1,1
+1372,Control,Male_73,0,1,0,0
+1373,MedDiet + VOO,Male_62,0,1,0,0
+1374,Control,Male_55,1,0,0,0
+1375,Control,Female_77,1,0,0,0
+1376,Control,Male_72,0,0,1,0
+1377,MedDiet + Nuts,Female_74,1,0,0,0
+1378,MedDiet + VOO,Male_72,0,0,1,0
+1379,Control,Female_73,1,0,0,0
+1380,MedDiet + Nuts,Male_72,0,1,0,0
+1381,MedDiet + VOO,Female_62,1,0,0,0
+1382,Control,Male_73,0,1,0,0
+1383,MedDiet + Nuts,Male_55,0,1,0,0
+1384,MedDiet + Nuts,Female_73,1,0,0,0
+1385,MedDiet + Nuts,Male_56,1,0,0,0
+1386,Control,Female_64,0,0,1,0
+1387,Control,Male_78,0,0,1,0
+1388,Control,Male_78,1,0,0,0
+1389,MedDiet + VOO,Female_72,1,0,0,0
+1390,Control,Male_58,0,0,1,0
+1391,Control,Male_67,0,1,0,1
+1392,MedDiet + VOO,Female_63,0,1,0,0
+1393,Control,Male_60,1,0,0,0
+1394,Control,Female_60,1,0,0,0
+1395,Control,Female_67,1,0,0,0
+1396,MedDiet + VOO,Female_68,1,0,0,0
+1397,Control,Male_67,0,1,0,0
+1398,MedDiet + Nuts,Male_63,0,1,0,0
+1399,MedDiet + Nuts,Female_61,1,0,0,0
+1400,MedDiet + VOO,Female_66,1,0,0,0
+1401,MedDiet + VOO,Male_62,0,1,0,0
+1402,MedDiet + VOO,Female_60,1,0,0,0
+1403,Control,Male_64,1,0,0,0
+1404,Control,Female_64,1,0,0,0
+1405,MedDiet + Nuts,Male_73,0,1,0,0
+1406,MedDiet + VOO,Female_80,1,0,0,0
+1407,Control,Female_61,1,0,0,0
+1408,Control,Female_64,1,0,0,0
+1409,MedDiet + VOO,Female_61,1,0,0,0
+1410,MedDiet + Nuts,Male_77,0,0,1,0
+1411,MedDiet + Nuts,Female_66,1,0,0,0
+1412,Control,Male_59,0,0,1,0
+1413,MedDiet + Nuts,Female_66,1,0,0,0
+1414,Control,Female_76,1,0,0,0
+1415,Control,Female_60,1,0,0,0
+1416,MedDiet + Nuts,Female_59,1,0,0,0
+1417,MedDiet + Nuts,Female_68,1,0,0,0
+1418,MedDiet + Nuts,Female_60,1,0,0,0
+1419,MedDiet + Nuts,Male_71,0,0,1,0
+1420,MedDiet + Nuts,Female_65,1,0,0,0
+1421,Control,Female_61,1,0,0,0
+1422,MedDiet + VOO,Female_73,1,0,0,0
+1423,MedDiet + VOO,Male_66,0,0,1,0
+1424,Control,Female_74,1,0,0,1
+1425,MedDiet + VOO,Male_69,0,1,0,0
+1426,MedDiet + Nuts,Female_74,1,0,0,0
+1427,MedDiet + VOO,Female_63,1,0,0,0
+1428,Control,Male_59,0,0,1,0
+1429,Control,Female_65,1,0,0,1
+1430,Control,Male_74,0,0,1,0
+1431,MedDiet + Nuts,Female_74,1,0,0,0
+1432,MedDiet + Nuts,Male_64,1,0,0,0
+1433,MedDiet + Nuts,Male_63,0,1,0,0
+1434,Control,Female_66,1,0,0,0
+1435,MedDiet + VOO,Male_61,1,0,0,0
+1436,MedDiet + VOO,Female_63,1,0,0,0
+1437,Control,Female_67,1,0,0,0
+1438,Control,Female_78,1,0,0,0
+1439,Control,Male_70,0,1,0,0
+1440,Control,Female_66,1,0,0,0
+1441,Control,Female_69,1,0,0,0
+1442,MedDiet + Nuts,Male_70,1,0,0,0
+1443,MedDiet + Nuts,Male_76,0,1,0,0
+1444,MedDiet + Nuts,Female_61,1,0,0,0
+1445,MedDiet + VOO,Male_72,1,0,0,0
+1446,Control,Female_67,1,0,0,0
+1447,MedDiet + VOO,Female_76,1,0,0,0
+1448,MedDiet + Nuts,Male_62,0,1,0,0
+1449,MedDiet + Nuts,Female_76,1,0,0,0
+1450,MedDiet + Nuts,Female_69,1,0,0,0
+1451,MedDiet + Nuts,Male_74,0,1,0,0
+1452,Control,Male_68,0,1,0,0
+1453,Control,Male_63,0,1,0,0
+1454,MedDiet + Nuts,Female_61,1,0,0,0
+1455,MedDiet + VOO,Female_76,1,0,0,0
+1456,MedDiet + Nuts,Male_58,0,1,0,0
+1457,MedDiet + VOO,Female_70,0,1,0,0
+1458,MedDiet + VOO,Female_66,1,0,0,0
+1459,MedDiet + VOO,Male_62,0,1,0,0
+1460,Control,Female_71,1,0,0,0
+1461,MedDiet + VOO,Female_69,1,0,0,0
+1462,MedDiet + VOO,Female_76,1,0,0,0
+1463,MedDiet + Nuts,Female_69,1,0,0,0
+1464,MedDiet + VOO,Female_65,1,0,0,0
+1465,Control,Male_71,1,0,0,0
+1466,MedDiet + Nuts,Female_73,0,1,0,0
+1467,Control,Female_60,1,0,0,0
+1468,Control,Female_72,1,0,0,0
+1469,MedDiet + VOO,Male_64,0,1,0,0
+1470,MedDiet + Nuts,Male_64,1,0,0,0
+1471,Control,Female_62,1,0,0,0
+1472,MedDiet + Nuts,Male_71,0,1,0,0
+1473,MedDiet + VOO,Female_79,1,0,0,0
+1474,Control,Male_63,0,1,0,0
+1475,MedDiet + Nuts,Male_69,0,1,0,0
+1476,Control,Female_67,0,1,0,0
+1477,Control,Female_57,0,0,1,0
+1478,Control,Female_68,1,0,0,0
+1479,Control,Male_74,0,1,0,0
+1480,MedDiet + VOO,Male_72,0,0,1,0
+1481,Control,Male_77,1,0,0,0
+1482,MedDiet + VOO,Female_65,1,0,0,0
+1483,MedDiet + VOO,Male_58,0,1,0,0
+1484,Control,Male_55,0,0,1,0
+1485,MedDiet + VOO,Female_78,1,0,0,0
+1486,MedDiet + Nuts,Female_67,1,0,0,0
+1487,MedDiet + Nuts,Male_66,0,0,1,1
+1488,MedDiet + Nuts,Female_60,1,0,0,0
+1489,MedDiet + Nuts,Male_74,1,0,0,0
+1490,MedDiet + VOO,Male_62,0,1,0,0
+1491,Control,Male_57,1,0,0,0
+1492,MedDiet + Nuts,Female_60,0,1,0,0
+1493,MedDiet + VOO,Female_68,0,1,0,0
+1494,MedDiet + Nuts,Male_62,0,0,1,1
+1495,Control,Female_71,1,0,0,0
+1496,MedDiet + VOO,Female_64,1,0,0,0
+1497,MedDiet + Nuts,Male_59,0,1,0,0
+1498,MedDiet + VOO,Male_66,0,1,0,0
+1499,Control,Male_72,1,0,0,0
+1500,MedDiet + VOO,Female_60,1,0,0,0
+1501,MedDiet + Nuts,Female_54,1,0,0,0
+1502,Control,Female_75,1,0,0,0
+1503,Control,Male_62,0,1,0,0
+1504,MedDiet + VOO,Male_64,0,1,0,0
+1505,MedDiet + VOO,Male_57,1,0,0,0
+1506,MedDiet + Nuts,Male_56,1,0,0,0
+1507,Control,Female_60,0,1,0,0
+1508,MedDiet + VOO,Female_66,1,0,0,0
+1509,Control,Female_66,1,0,0,0
+1510,Control,Male_76,0,1,0,0
+1511,Control,Female_61,1,0,0,0
+1512,MedDiet + VOO,Female_67,1,0,0,0
+1513,MedDiet + VOO,Male_74,0,1,0,0
+1514,MedDiet + VOO,Male_57,0,0,1,0
+1515,MedDiet + VOO,Female_78,0,1,0,0
+1516,Control,Female_63,1,0,0,0
+1517,Control,Male_57,0,1,0,0
+1518,Control,Female_68,1,0,0,0
+1519,Control,Male_68,0,0,1,0
+1520,MedDiet + VOO,Female_63,1,0,0,0
+1521,MedDiet + VOO,Female_69,1,0,0,0
+1522,MedDiet + VOO,Female_65,1,0,0,0
+1523,Control,Male_62,0,1,0,0
+1524,MedDiet + VOO,Female_61,0,0,1,0
+1525,MedDiet + Nuts,Male_59,0,0,1,0
+1526,MedDiet + VOO,Female_68,1,0,0,0
+1527,MedDiet + VOO,Male_67,0,1,0,0
+1528,Control,Female_71,1,0,0,0
+1529,MedDiet + VOO,Male_61,0,1,0,0
+1530,MedDiet + VOO,Male_72,0,1,0,0
+1531,Control,Female_61,1,0,0,0
+1532,Control,Female_79,1,0,0,0
+1533,MedDiet + VOO,Male_65,0,1,0,0
+1534,MedDiet + Nuts,Female_64,1,0,0,0
+1535,MedDiet + Nuts,Female_79,1,0,0,0
+1536,MedDiet + VOO,Female_81,0,1,0,0
+1537,MedDiet + VOO,Female_60,1,0,0,0
+1538,Control,Male_72,0,1,0,0
+1539,MedDiet + VOO,Female_62,0,0,1,0
+1540,Control,Male_70,0,1,0,0
+1541,MedDiet + VOO,Male_72,0,1,0,0
+1542,MedDiet + VOO,Female_72,1,0,0,0
+1543,Control,Female_64,1,0,0,0
+1544,MedDiet + Nuts,Male_78,0,1,0,0
+1545,MedDiet + Nuts,Female_76,1,0,0,0
+1546,Control,Female_76,1,0,0,0
+1547,Control,Male_73,1,0,0,0
+1548,MedDiet + Nuts,Male_70,0,1,0,0
+1549,MedDiet + Nuts,Male_65,0,1,0,0
+1550,MedDiet + VOO,Female_60,1,0,0,0
+1551,MedDiet + VOO,Male_79,0,1,0,1
+1552,MedDiet + Nuts,Female_68,1,0,0,0
+1553,MedDiet + Nuts,Female_60,1,0,0,0
+1554,MedDiet + Nuts,Female_63,1,0,0,0
+1555,MedDiet + VOO,Male_60,1,0,0,0
+1556,Control,Female_63,1,0,0,0
+1557,Control,Female_67,1,0,0,0
+1558,Control,Female_66,1,0,0,1
+1559,Control,Female_77,1,0,0,0
+1560,Control,Male_69,0,0,1,0
+1561,MedDiet + Nuts,Female_59,1,0,0,0
+1562,MedDiet + Nuts,Male_79,0,1,0,0
+1563,Control,Male_69,0,0,1,0
+1564,MedDiet + Nuts,Female_70,1,0,0,0
+1565,MedDiet + VOO,Male_59,0,1,0,0
+1566,Control,Female_74,0,1,0,0
+1567,Control,Male_67,0,1,0,0
+1568,Control,Female_71,0,1,0,0
+1569,MedDiet + Nuts,Male_71,1,0,0,0
+1570,MedDiet + VOO,Male_66,1,0,0,0
+1571,MedDiet + Nuts,Female_70,1,0,0,0
+1572,Control,Male_58,1,0,0,0
+1573,MedDiet + Nuts,Female_68,1,0,0,0
+1574,Control,Male_67,0,1,0,0
+1575,MedDiet + Nuts,Male_66,0,1,0,0
+1576,MedDiet + VOO,Male_72,0,0,1,0
+1577,Control,Male_64,1,0,0,0
+1578,Control,Female_63,0,1,0,0
+1579,MedDiet + Nuts,Female_71,1,0,0,0
+1580,Control,Female_72,1,0,0,0
+1581,MedDiet + VOO,Male_60,0,0,1,1
+1582,Control,Female_78,1,0,0,0
+1583,Control,Male_58,1,0,0,0
+1584,MedDiet + VOO,Female_73,1,0,0,0
+1585,MedDiet + Nuts,Male_63,0,0,1,0
+1586,MedDiet + Nuts,Female_77,1,0,0,0
+1587,Control,Female_63,1,0,0,0
+1588,MedDiet + VOO,Female_70,1,0,0,0
+1589,Control,Male_75,0,1,0,1
+1590,MedDiet + Nuts,Female_65,1,0,0,0
+1591,Control,Female_78,1,0,0,0
+1592,MedDiet + Nuts,Female_77,1,0,0,0
+1593,Control,Male_71,0,0,1,0
+1594,MedDiet + Nuts,Female_64,1,0,0,0
+1595,MedDiet + VOO,Female_73,1,0,0,0
+1596,Control,Male_68,0,1,0,0
+1597,MedDiet + Nuts,Male_73,0,1,0,0
+1598,MedDiet + VOO,Female_66,1,0,0,0
+1599,MedDiet + VOO,Female_79,1,0,0,0
+1600,Control,Male_74,0,1,0,0
+1601,Control,Male_76,0,0,1,0
+1602,Control,Female_64,1,0,0,0
+1603,MedDiet + Nuts,Female_71,1,0,0,0
+1604,MedDiet + Nuts,Male_67,0,0,1,0
+1605,MedDiet + VOO,Male_77,1,0,0,0
+1606,MedDiet + Nuts,Male_64,1,0,0,0
+1607,Control,Female_60,1,0,0,0
+1608,MedDiet + Nuts,Female_66,1,0,0,0
+1609,Control,Male_61,0,0,1,0
+1610,MedDiet + Nuts,Female_78,1,0,0,0
+1611,MedDiet + Nuts,Male_70,1,0,0,0
+1612,MedDiet + Nuts,Male_68,0,1,0,0
+1613,Control,Female_60,1,0,0,0
+1614,MedDiet + VOO,Female_60,1,0,0,0
+1615,MedDiet + VOO,Female_67,1,0,0,0
+1616,MedDiet + VOO,Female_60,1,0,0,0
+1617,MedDiet + Nuts,Female_68,1,0,0,0
+1618,MedDiet + VOO,Male_63,0,1,0,0
+1619,MedDiet + VOO,Male_74,0,1,0,0
+1620,MedDiet + VOO,Female_75,1,0,0,0
+1621,Control,Female_77,1,0,0,0
+1622,MedDiet + VOO,Female_59,1,0,0,0
+1623,MedDiet + Nuts,Female_60,0,0,1,0
+1624,MedDiet + Nuts,Male_78,0,1,0,0
+1625,Control,Female_60,1,0,0,0
+1626,MedDiet + Nuts,Male_63,0,0,1,0
+1627,Control,Female_62,1,0,0,0
+1628,MedDiet + VOO,Female_70,1,0,0,0
+1629,Control,Male_74,1,0,0,0
+1630,MedDiet + VOO,Male_72,0,1,0,0
+1631,Control,Male_64,0,1,0,0
+1632,MedDiet + Nuts,Female_60,1,0,0,0
+1633,Control,Female_79,1,0,0,0
+1634,Control,Female_64,1,0,0,0
+1635,Control,Female_60,1,0,0,0
+1636,MedDiet + VOO,Female_64,1,0,0,0
+1637,Control,Female_65,1,0,0,0
+1638,MedDiet + Nuts,Male_58,1,0,0,0
+1639,MedDiet + Nuts,Male_62,1,0,0,0
+1640,Control,Male_71,0,1,0,1
+1641,MedDiet + VOO,Female_71,1,0,0,0
+1642,MedDiet + VOO,Male_59,0,0,1,1
+1643,MedDiet + VOO,Female_69,1,0,0,0
+1644,Control,Female_65,0,1,0,0
+1645,MedDiet + VOO,Male_65,1,0,0,0
+1646,MedDiet + Nuts,Male_60,0,0,1,0
+1647,Control,Female_65,1,0,0,0
+1648,Control,Male_80,0,0,1,1
+1649,MedDiet + Nuts,Male_59,1,0,0,0
+1650,MedDiet + VOO,Female_64,0,1,0,0
+1651,MedDiet + Nuts,Male_68,1,0,0,0
+1652,MedDiet + VOO,Female_63,0,0,1,0
+1653,Control,Male_64,1,0,0,0
+1654,MedDiet + VOO,Female_61,1,0,0,0
+1655,Control,Male_78,0,1,0,0
+1656,MedDiet + VOO,Female_63,1,0,0,0
+1657,MedDiet + VOO,Female_65,1,0,0,0
+1658,MedDiet + Nuts,Female_59,1,0,0,0
+1659,Control,Male_79,0,0,1,0
+1660,MedDiet + Nuts,Female_61,1,0,0,0
+1661,MedDiet + VOO,Male_55,0,0,1,0
+1662,Control,Female_63,1,0,0,0
+1663,MedDiet + VOO,Female_65,1,0,0,0
+1664,MedDiet + VOO,Female_65,1,0,0,0
+1665,MedDiet + Nuts,Female_63,1,0,0,0
+1666,MedDiet + VOO,Male_70,1,0,0,0
+1667,Control,Female_69,1,0,0,0
+1668,MedDiet + Nuts,Male_72,1,0,0,0
+1669,MedDiet + Nuts,Male_67,0,1,0,0
+1670,MedDiet + Nuts,Male_63,0,1,0,0
+1671,Control,Male_64,0,0,1,1
+1672,Control,Female_60,0,1,0,0
+1673,MedDiet + VOO,Male_76,0,1,0,0
+1674,MedDiet + VOO,Male_59,0,0,1,0
+1675,Control,Male_79,0,1,0,0
+1676,MedDiet + VOO,Female_76,1,0,0,0
+1677,MedDiet + VOO,Male_63,0,1,0,0
+1678,MedDiet + VOO,Male_71,1,0,0,0
+1679,MedDiet + Nuts,Male_65,0,0,1,0
+1680,Control,Female_60,1,0,0,0
+1681,Control,Female_72,1,0,0,0
+1682,MedDiet + VOO,Female_75,1,0,0,0
+1683,Control,Female_67,0,1,0,0
+1684,Control,Female_65,0,0,1,0
+1685,Control,Female_61,1,0,0,0
+1686,MedDiet + VOO,Female_69,1,0,0,0
+1687,Control,Female_65,0,1,0,1
+1688,MedDiet + VOO,Female_66,0,1,0,0
+1689,MedDiet + Nuts,Male_62,0,1,0,0
+1690,Control,Male_66,0,1,0,0
+1691,MedDiet + VOO,Male_80,0,1,0,0
+1692,MedDiet + Nuts,Male_60,0,1,0,1
+1693,MedDiet + VOO,Female_79,1,0,0,0
+1694,MedDiet + VOO,Female_68,1,0,0,0
+1695,MedDiet + VOO,Male_66,0,0,1,0
+1696,MedDiet + Nuts,Male_55,1,0,0,0
+1697,MedDiet + Nuts,Female_60,0,1,0,0
+1698,MedDiet + Nuts,Female_61,0,0,1,0
+1699,MedDiet + Nuts,Male_64,0,1,0,0
+1700,Control,Male_57,0,0,1,0
+1701,MedDiet + Nuts,Female_68,1,0,0,0
+1702,MedDiet + Nuts,Female_68,1,0,0,0
+1703,Control,Male_71,0,0,1,0
+1704,MedDiet + Nuts,Male_73,0,1,0,0
+1705,MedDiet + VOO,Male_63,1,0,0,0
+1706,MedDiet + Nuts,Male_77,0,1,0,1
+1707,MedDiet + VOO,Female_80,1,0,0,0
+1708,MedDiet + VOO,Male_52,0,0,1,0
+1709,MedDiet + VOO,Male_70,0,1,0,0
+1710,Control,Male_70,0,1,0,0
+1711,Control,Female_80,0,0,1,0
+1712,MedDiet + VOO,Male_70,0,1,0,1
+1713,MedDiet + VOO,Female_71,1,0,0,0
+1714,MedDiet + VOO,Male_76,1,0,0,0
+1715,Control,Female_59,1,0,0,0
+1716,MedDiet + VOO,Female_75,1,0,0,0
+1717,MedDiet + VOO,Male_71,0,1,0,0
+1718,MedDiet + Nuts,Female_60,1,0,0,0
+1719,MedDiet + VOO,Male_56,0,0,1,0
+1720,MedDiet + VOO,Male_67,0,0,1,0
+1721,Control,Male_68,0,1,0,0
+1722,MedDiet + VOO,Female_61,1,0,0,0
+1723,MedDiet + VOO,Female_72,1,0,0,0
+1724,MedDiet + Nuts,Female_70,1,0,0,0
