@@ -1,0 +1,8 @@
+Timing data class ASPP LatAm 2026
+
+Goal
+----
+
+We've got 90 + 90 minutes.
+First half: data + numpy
+Second half: 90 min tabular
