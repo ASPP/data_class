@@ -9,62 +9,72 @@ import matplotlib.pyplot as plt
 # `predimed_mapping.csv` contain the information of which patient was assigned to which diet group.
 plt.style.use('/Users/verjim/laptop_D_17.01.2022/Schmitz_lab/teaching/ASPPLatAm_2026/data_class/exercises/tabular_join/presentation_plots.mplstyle')
 
+
+# s_a_c for split-apply-combine
+
 #%%
 def main():
-    plot_performance()
+    # join_plot_performance()
+    s_a_c_plot_performance()
 
-def solve_2_for_loops(df, df_info):
+def join_solve_2_for_loops(df_patients, df_locations):
     '''
     merges the two dataframes using two for loops
     '''
 
-    # insert the column where info willbe stored
-    df.insert(0, 'group_2_for_loops', '')
+    patients_with_city = df_patients.copy()
+    patients_with_city['city_2_for_loops'] = 'n/a'
 
-    for patient in df['patient-id'].unique():
-        df_patient = df[df['patient-id'] == patient]
-        for loc in df_patient['location-id']:
-            row_df_info = df_info[(df_info['patient-id'] == patient) &
-                                (df_info['location-id'] == loc)]
-            if len(row_df_info) == 0:
-                group = np.nan
-            if len(row_df_info) == 1:
-                group = row_df_info.group.values[0]
-            indx_df = df[(df['patient-id'] == patient) &
-                                (df['location-id'] == loc)].index.tolist()
-            df.loc[indx_df, 'group_2_for_loops'] = group
-    return df
+    for idx, row in patients_with_city.iterrows():  # O(N)
+        location = row['location-id']
+        matching_city = (df_locations['location-id'] == location)   # O(M)
+        city = df_locations.loc[matching_city, 'city']
+        if len(city) > 0:
+            patients_with_city.loc[idx, 'city'] = city.iloc[0]
+    return patients_with_city
 
 
-def solve_1_for_loop(df, df_info):
+def join_solve_with_sorting(df_patients, df_locations):
 
     '''
     merges the two tables using 1 for loop and enumerate
     '''
+    patients_with_city = df_patients.copy()
+    patients_with_city['city_with_sort'] = 'n/a'
 
-    groups = []
-    for i, patient in enumerate(df['patient-id']):
-        loc = df['location-id'][i]
-        row_df_info = df_info[(df_info['patient-id'] == patient) &
-                                (df_info['location-id'] == loc)]
-        if len(row_df_info) == 0:
-            group = np.nan
-        if len(row_df_info) == 1:
-            group = row_df_info.group.values[0]
-        if len(row_df_info) > 1:
-            print(f'error repeated rows for patient {patient} at {loc}')
+    sorted_patients = patients_with_city.sort_values(['location-id'])   # O(N log N)
+    sorted_locations = df_locations.sort_values(['location-id'])           # O(M log M)
 
-        groups.append(group)
-    df.insert(1, 'group', groups)
-    return df
+    city_2_col = sorted_patients.columns.get_loc('city_with_sort') # get the column location (number)
+    locations_idx = 0
+    patients_idx = 0
+
+    while True:    # O(N + M)
+        row_locations = sorted_locations.iloc[locations_idx]
+        key_locations = row_locations['location-id']
+        
+        row_patients = sorted_patients.iloc[patients_idx]
+        key_patients = row_patients['location-id']
+
+        if key_patients == key_locations:
+            original_idx = sorted_patients.index[patients_idx]
+            patients_with_city.iloc[original_idx, city_2_col] = row_locations['city']
+            patients_idx += 1
+        else:
+            locations_idx += 1
+            if locations_idx >= len(sorted_locations):
+                break
+        if patients_idx >= len(sorted_patients):
+            break
+    return patients_with_city
 
 
-def solve_1_line(df, df_info):
+def join_solve_1_line(df_patients, df_locations):
     '''
     merges the two dataframes using a built-in pandas function
     '''
-    df_with_info = df.merge(df_info, on = ['patient-id', 'location-id'], how = 'left')
-    return df_with_info
+    patients_with_city = df_patients.merge(df_locations, on = ['location-id'], how = 'left')
+    return patients_with_city
 
 
 def repeat_dataframe(df, n):
@@ -75,14 +85,15 @@ def repeat_dataframe(df, n):
     return big_df
 
 
-def get_performance(func, num_repeats):
+def join_get_performance(func, num_repeats):
 
     '''
     returns the number of repetitions and the time it takes to merge using
     the function func
     '''
-    df = pd.read_csv('../../data/predimed_records.csv')
-    df_info = pd.read_csv('../../data/predimed_mapping.csv')
+    df_data = '/Users/verjim/laptop_D_17.01.2022/Schmitz_lab/teaching/ASPPLatAm_2026/data_class/data'
+    df = pd.read_csv(f'{df_data}/predimed_records.csv')
+    df_info = pd.read_csv(f'{df_data}/predimed_location.csv')
 
     times = []
 
@@ -99,15 +110,17 @@ def get_performance(func, num_repeats):
 
     return list(range(0, num_repeats+1)), times
 
-def plot_performance(num_repeats = 32):
+def join_plot_performance(num_repeats = 32):
     '''
     plots the performance of the three functions
     '''
+    
+    save_dir_plots = '/Users/verjim/laptop_D_17.01.2022/Schmitz_lab/teaching/ASPPLatAm_2026/data_class/exercises/tabular_join/'
 
     funcs_dict = {
-        'O(n*m + n^2)': [solve_2_for_loops, 'purple'],
-        'O(n * m)': [solve_1_for_loop, 'green'],
-        'O (n + m)': [solve_1_line, 'orange']
+        'O(N*M)': [join_solve_2_for_loops, 'purple'],
+        'O(N log N + M log M)': [join_solve_with_sorting, 'green'],
+        'O(n+m)': [join_solve_1_line, 'orange']
     }
 
     fig, ax = plt.subplots(1,1, figsize = (6, 5))
@@ -124,12 +137,117 @@ def plot_performance(num_repeats = 32):
     labels_ = [f'{a}x' for a in ticks_]
     ax.set_xticks(ticks_, labels_)
     ax.set_ylabel('Time (ms)')
-    plt.savefig('plot_performance_tabular.png')
+    plt.savefig(f'{save_dir_plots}plot_performance_tabular_location.png')
+    plt.savefig(f'{save_dir_plots}plot_performance_tabular_location.svg',
+            format='svg', bbox_inches='tight', dpi=300)
     plt.show()
+
+
+def s_a_c_nested_for_loop(df_patients):
+    '''
+    using this solution of calculation just for visualization. Never to be used irl.
+    returns: dictionary with groups as keys and count of cardiovascualr events as values
+    '''
+    # change events to int
+    df_patients['event_int'] = df_patients['event'].map({'Yes': 1, 'No': 0})
+
+    events_nested = {}
+    for group in df_patients['group'].unique():                  
+        total = 0
+        for event, group_label in zip(df_patients['event_int'], df_patients['group']):
+            if group_label == group:
+                total += event                             
+        events_nested[group] = total                      
+
+    return events_nested
+
+
+def s_a_c_row_iteration(df_patients):
+    '''
+    iterates through rows to get eh number of cardiovascular events per diet group
+    returns: dictionary with groups as keys and count of cardiovascualr events as values
+    '''
+    # change events to int
+    df_patients['event_int'] = df_patients['event'].map({'Yes': 1, 'No': 0})
+
+    events_rows = {}
+    for i, row in df_patients.iterrows():
+        group = row['group']
+        event = row['event_int'] # 1 or 0
+        if group not in events_rows:
+            events_rows[group] = 0
+        events_rows[group] += event
+    
+    return events_rows
+
+def s_a_c_one_line(df_patients):
+    '''
+    usees built-in pandas functions (groupby) to get the number of cardiovascular events
+    per diet group
+    returns: pandas series
+    '''
+
+    events_groupby = df_patients.groupby('group')['event'].sum()
+    return events_groupby
+
+
+def s_a_c_get_performance(func, num_repeats):
+
+    '''
+    returns the number of repetitions and the time it takes to merge using
+    the function func
+    '''
+    df_data = '/Users/verjim/laptop_D_17.01.2022/Schmitz_lab/teaching/ASPPLatAm_2026/data_class/data'
+    df = pd.read_csv(f'{df_data}/processed_data_predimed.csv')
+
+    times = []
+
+    for i in range(0, num_repeats+1):
+        if i == 0:
+            times.append(0)
+            continue
+        big_df = repeat_dataframe(df, i)
+
+        start = time.perf_counter()
+        _ = func(big_df)
+        # put out in ms
+        times.append((time.perf_counter() - start) * 1000)
+
+    return list(range(0, num_repeats+1)), times
+
+def s_a_c_plot_performance(num_repeats = 33):
+    '''
+    plots the performance of the three functions
+    '''
+    
+    save_dir_plots = '/Users/verjim/laptop_D_17.01.2022/Schmitz_lab/teaching/ASPPLatAm_2026/data_class/'+ \
+        'exercises/tabular_split_apply_combine/'
+
+    funcs_dict = {
+        'O(N*G)': [s_a_c_nested_for_loop, 'purple'],
+        'O(N) + Series object': [s_a_c_row_iteration, 'green'],
+        'O(N)': [s_a_c_one_line, 'orange']
+    }
+
+    fig, ax = plt.subplots(1,1, figsize = (6, 5))
+
+    for method_name, detail in funcs_dict.items():
+        func = detail[0]
+        col = detail[1]
+        repeats, times = s_a_c_get_performance(func, num_repeats)
+        ax.plot(repeats, times, label = method_name, color = col)
+        ax.scatter(repeats, times, color = col)
+
+    ax.set_xlabel('Input size')
+    ticks_ = np.arange(0, num_repeats, 2)
+    labels_ = [f'{a}x' for a in ticks_]
+    ax.set_xticks(ticks_, labels_)
+    ax.set_ylabel('Time (ms)')
+    plt.savefig(f'{save_dir_plots}plot_performance_s_a_c.png')
+    plt.savefig(f'{save_dir_plots}plot_performance_s_a_c.svg',
+            format='svg', bbox_inches='tight', dpi=300)
+    plt.show()
+
 
 if __name__ == "__main__":
     main()
-
-
-
-# %%
