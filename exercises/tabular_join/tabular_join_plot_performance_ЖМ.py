@@ -7,14 +7,9 @@ import matplotlib.pyplot as plt
 # Data comes in two different files. The file `predimed_records.csv` file contains the
 # clinical data for each patient, except which diet group they were assigned. The file
 # `predimed_mapping.csv` contain the information of which patient was assigned to which diet group.
-plt.style.use('presentation_plots.mplstyle')
+plt.style.use('/Users/verjim/laptop_D_17.01.2022/Schmitz_lab/teaching/ASPPLatAm_2026/data_class/exercises/tabular_join/presentation_plots.mplstyle')
 
 # s_a_c for split-apply-combine
-
-#%%
-def main():
-    join_plot_performance(num_repeats=25)
-    # s_a_c_plot_performance(num_repeats=32)
 
 def join_solve_2_for_loops(df_patients, df_locations):
     '''
@@ -26,7 +21,7 @@ def join_solve_2_for_loops(df_patients, df_locations):
 
     for idx, row in patients_with_city.iterrows():  # O(N)
         location = row['location-id']
-        matching_city = [r['location-id'] == location for _, r in df_locations.iterrows()]
+        matching_city = (df_locations['location-id'] == location)   # O(M)
         city = df_locations.loc[matching_city, 'city']
         if len(city) > 0:
             patients_with_city.loc[idx, 'city'] = city.iloc[0]
@@ -51,7 +46,7 @@ def join_solve_with_sorting(df_patients, df_locations):
     while True:    # O(N + M)
         row_locations = sorted_locations.iloc[locations_idx]
         key_locations = row_locations['location-id']
-
+        
         row_patients = sorted_patients.iloc[patients_idx]
         key_patients = row_patients['location-id']
 
@@ -90,6 +85,9 @@ def join_get_performance(func, num_repeats):
     returns the number of repetitions and the time it takes to merge using
     the function func
     '''
+    df_data = '/Users/verjim/laptop_D_17.01.2022/Schmitz_lab/teaching/ASPPLatAm_2026/data_class/data'
+    df = pd.read_csv(f'{df_data}/predimed_records.csv')
+    df_info = pd.read_csv(f'{df_data}/predimed_location.csv')
 
     times = []
 
@@ -97,28 +95,20 @@ def join_get_performance(func, num_repeats):
         if i == 0:
             times.append(0)
             continue
-
-        # create artificial data with increasing size
-        M = 10 * i
-        a = 5
-        N = M * a
-        big_df = pd.DataFrame({'location-id': list(range(M)) * a,
-            'blah': np.random.randint(0, 1000, size=(N,))}).sample(frac=1).reset_index(drop=True)
-        big_df_info = pd.DataFrame({'location-id': list(range(M)),
-            'city': list(str(x) for x in range(M))}).sample(frac=1).reset_index(drop=True)
+        big_df = repeat_dataframe(df, i)
 
         start = time.perf_counter()
-        _ = func(big_df, big_df_info)
+        _ = func(big_df, df_info)
         # put out in ms
         times.append((time.perf_counter() - start) * 1000)
 
     return list(range(0, num_repeats+1)), times
 
-def join_plot_performance(num_repeats=24):
+def join_plot_performance(num_repeats = 32):
     '''
     plots the performance of the three functions
     '''
-
+    
     save_dir_plots = '/Users/verjim/laptop_D_17.01.2022/Schmitz_lab/teaching/ASPPLatAm_2026/data_class/exercises/tabular_join/'
 
     funcs_dict = {
@@ -132,7 +122,7 @@ def join_plot_performance(num_repeats=24):
     for method_name, detail in funcs_dict.items():
         func = detail[0]
         col = detail[1]
-        repeats, times = join_get_performance(func, num_repeats)
+        repeats, times = get_performance(func, num_repeats)
         ax.plot(repeats, times, label = method_name, color = col)
         ax.scatter(repeats, times, color = col)
 
@@ -141,8 +131,8 @@ def join_plot_performance(num_repeats=24):
     labels_ = [f'{a}x' for a in ticks_]
     ax.set_xticks(ticks_, labels_)
     ax.set_ylabel('Time (ms)')
-    plt.savefig(f'{save_dir_plots}plot_performance_tabular_location_all.png')
-    plt.savefig(f'{save_dir_plots}plot_performance_tabular_location_all.svg',
+    plt.savefig(f'{save_dir_plots}plot_performance_tabular_location.png')
+    plt.savefig(f'{save_dir_plots}plot_performance_tabular_location.svg',
             format='svg', bbox_inches='tight', dpi=300)
     plt.show()
 
@@ -156,12 +146,12 @@ def s_a_c_nested_for_loop(df_patients):
     df_patients['event_int'] = df_patients['event'].map({'Yes': 1, 'No': 0})
 
     events_nested = {}
-    for group in df_patients['group'].unique():
+    for group in df_patients['group'].unique():                  
         total = 0
         for event, group_label in zip(df_patients['event_int'], df_patients['group']):
             if group_label == group:
-                total += event
-        events_nested[group] = total
+                total += event                             
+        events_nested[group] = total                      
 
     return events_nested
 
@@ -181,7 +171,7 @@ def s_a_c_row_iteration(df_patients):
         if group not in events_rows:
             events_rows[group] = 0
         events_rows[group] += event
-
+    
     return events_rows
 
 def s_a_c_one_line(df_patients):
@@ -201,7 +191,7 @@ def s_a_c_get_performance(func, num_repeats):
     returns the number of repetitions and the time it takes to merge using
     the function func
     '''
-    df_data = '../../data'
+    df_data = '/Users/verjim/laptop_D_17.01.2022/Schmitz_lab/teaching/ASPPLatAm_2026/data_class/data'
     df = pd.read_csv(f'{df_data}/processed_data_predimed.csv')
 
     times = []
@@ -223,8 +213,9 @@ def s_a_c_plot_performance(num_repeats = 33):
     '''
     plots the performance of the three functions
     '''
-
-    save_dir_plots = '.'
+    
+    save_dir_plots = '/Users/verjim/laptop_D_17.01.2022/Schmitz_lab/teaching/ASPPLatAm_2026/data_class/'+ \
+        'exercises/tabular_split_apply_combine/'
 
     funcs_dict = {
         'O(N*G)': [s_a_c_nested_for_loop, 'purple'],

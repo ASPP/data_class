@@ -13,8 +13,8 @@ plt.style.use('presentation_plots.mplstyle')
 
 #%%
 def main():
-    join_plot_performance(num_repeats=25)
-    # s_a_c_plot_performance(num_repeats=32)
+    join_plot_performance(num_repeats = 32)
+    # s_a_c_plot_performance()
 
 def join_solve_2_for_loops(df_patients, df_locations):
     '''
@@ -114,12 +114,12 @@ def join_get_performance(func, num_repeats):
 
     return list(range(0, num_repeats+1)), times
 
-def join_plot_performance(num_repeats=24):
+def join_plot_performance(num_repeats = 32):
     '''
     plots the performance of the three functions
     '''
 
-    save_dir_plots = '/Users/verjim/laptop_D_17.01.2022/Schmitz_lab/teaching/ASPPLatAm_2026/data_class/exercises/tabular_join/'
+    save_dir_plots = '.'
 
     funcs_dict = {
         'O(N*M)': [join_solve_2_for_loops, 'purple'],
@@ -141,8 +141,8 @@ def join_plot_performance(num_repeats=24):
     labels_ = [f'{a}x' for a in ticks_]
     ax.set_xticks(ticks_, labels_)
     ax.set_ylabel('Time (ms)')
-    plt.savefig(f'{save_dir_plots}plot_performance_tabular_location_all.png')
-    plt.savefig(f'{save_dir_plots}plot_performance_tabular_location_all.svg',
+    plt.savefig(f'{save_dir_plots}plot_performance_tabular_location.png')
+    plt.savefig(f'{save_dir_plots}plot_performance_tabular_location.svg',
             format='svg', bbox_inches='tight', dpi=300)
     plt.show()
 
