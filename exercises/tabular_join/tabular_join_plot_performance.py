@@ -16,6 +16,7 @@ def main():
     join_plot_performance(num_repeats=25)
     # s_a_c_plot_performance(num_repeats=32)
 
+
 def join_solve_2_for_loops(df_patients, df_locations):
     '''
     merges the two dataframes using two for loops
@@ -119,7 +120,7 @@ def join_plot_performance(num_repeats=24):
     plots the performance of the three functions
     '''
 
-    save_dir_plots = '/Users/verjim/laptop_D_17.01.2022/Schmitz_lab/teaching/ASPPLatAm_2026/data_class/exercises/tabular_join/'
+    save_dir_plots = '.'
 
     funcs_dict = {
         'O(N*M)': [join_solve_2_for_loops, 'purple'],

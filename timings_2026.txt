@@ -5,4 +5,41 @@ Goal
 
 We've got 90 + 90 minutes.
 First half: data + numpy
-Second half: 90 min tabular
+Second half: 90 min tabular 
+
+
+
+Data
+
+Intro + big O: 20 min
+Exercise: 20 min + 5 min
+Fast for fixed size: 5 min
+
+NumPy
+
+Intro: 10 min
+O(1) operations: 5 min
+Indexing + broadcasting: 10 min (skip broadcasting in case)
+View exercise: live 10 min
+
+# Pet shop + assignment: 15 min
+# Function calling: 5 min
+# Exercise: 10 min + 5 min
+
+
+
+Tabular
+
+intro 5 min
+Exercise 20 min + 10 min solution
+Many tools + merge command 5 min
+Groupby 5 min
+Pivot table 2 min
+Exercise 15 min + 5 min solution
+Messy exercise 5 min
+Messy data 5 min
+Tidy data 10 min
+Hands-on how to tidy the exercise data 10 min
+
+
+-> ~95 min
