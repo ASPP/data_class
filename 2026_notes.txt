@@ -1,0 +1,21 @@
+# Data class, 2026 LatAm notes
+
+- The class was not as strong as usual; we adapted to accommodate that. We managed to finish in time, with 1.5h dedicated to data + array and 1.5h dedicated to tabular data. We skipped the part about being careful when passing arrays inside of functions (should we just remove it in general?)
+
+## Data
+- The data part was rearranged so that Big-O is only mentioned at the end, as "notation". That worked very well
+
+## NumPy
+- The numpy part now includes a "pet shop" demo about assignment and a few slides. They were well received.
+- There was a bit of confusion with "views" and "copies". We think it's because we always assumed that people know about views and copies, and we only had to explain how tell them apart. That's not the case, we need to introduce the concept at the beginning, with a slide or some kind of demonstration.
+- P said a lot of times "you just need to change the metadata". But you don't, what you do is get a new variable with different metadata. We need to show something like `y = x.reshape(...)` and how that `x` and `y` share the same data, but not the same metadata => view . And conversely `y = x[[1,3,2], :]` cannot do that.
+- Idea: in the view vs copy exercise, instead of interactively asking "is this a view or a copy?", print out the individual cases and ask them to fill in the metadata for `y` when possible, then decide if it's a view or a copy
+- We had reduced broadcasting to just a quick explanation of how it works with the strides, but it didn't add much => remove?
+
+Tabular
+- It went well, and we understood how to improve it further, esp. exercises
+- The tabular data is missing the motivation for why we need tabular data. What is it good for.
+- People did not know pandas nad spend a lot of time googleing. That should not be the case in Prague
+- P idea for first exercise: instead of asking them to write code to join the tables (many got stuck, or googled and found df.merge), show the two DFs and the result we want, and ask them to describe an algorithm. This part worked well when V interactively discussed the solution. Then show how to do it in python and short exercise where they do it
+- In general, when V showed data on screen and asked how to accomplish something, that worked very well. P feels like we could do the same for split-apply-combine ("what column do we group on? what value? what operation", and then small groupby exercise), and in the messy data part V showed the messy data and asked how to fix it.
+- The "messy data" slides they talk about "variables" but that is introduced later in the "tidy data" slide -> revise
