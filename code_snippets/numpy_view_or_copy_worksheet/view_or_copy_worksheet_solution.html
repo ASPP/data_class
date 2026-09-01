@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Is it a view or a copy? &mdash; solutions</title>
+<style>
+@page {
+  size: A4 portrait;
+  margin: 11mm 10mm 11mm 10mm;
+  @bottom-left { content: "Aug 2026, CC BY-SA 4.0"; font-family: Helvetica, Arial, sans-serif;
+                 font-size: 7pt; color: #9a9a9a; }
+  @bottom-right { content: counter(page); font-family: Helvetica, Arial, sans-serif;
+                  font-size: 8pt; color: #9a9a9a; }
+}
+body { font-family: Helvetica, Arial, sans-serif; font-size: 9pt; color: #000; margin: 0; }
+
+h1 { font-size: 14pt; margin: 0 0 2mm 0; }
+.intro { font-size: 8.5pt; color: #222; margin: 0 0 3.5mm 0; }
+.intro ol { margin: 1.2mm 0 0 0; padding-left: 5.5mm; }
+.intro li { margin-bottom: 1.2mm; }
+code, .mono { font-family: "DejaVu Sans Mono", Courier, monospace; }
+
+/* shared memory block, sits in the repeating table header */
+.memblock { margin: 0 0 3mm 0; }
+.memlabel { font-size: 8pt; color: #222; margin-bottom: 1.2mm; font-weight: normal; }
+table.membuf { border-collapse: collapse; }
+table.membuf td {
+  font-family: "DejaVu Sans Mono", Courier, monospace; font-size: 7.5pt;
+  text-align: center; width: 11mm; padding: 0.7mm 0;
+}
+table.membuf tr.vals td {
+  font-weight: bold; color: #1f3864; background: #dce6f5; border: 0.5pt solid #b4c6e7;
+}
+table.membuf tr.offs td { font-size: 6.5pt; color: #8a8a8a; border: none; padding-top: 0.5mm; }
+.memnote { font-size: 6.5pt; color: #9a9a9a; margin-top: 0.4mm; }
+
+table.sheet { width: 100%; border-collapse: collapse; }
+table.sheet > thead { display: table-header-group; }
+th.memcell { text-align: left; font-weight: normal; padding: 0; }
+tr.colheads th {
+  font-size: 9.5pt; text-align: left; padding: 0 0 1.5mm 0; vertical-align: bottom;
+  border-bottom: 0.6pt solid #cfcfcf;
+}
+th.h-op     { color: #000; }
+th.h-layout { color: #8faadc; }
+th.h-meta   { color: #8a8a8a; }
+th.h-check  { color: #000; }
+
+table.sheet > tbody > tr { page-break-inside: avoid; }
+table.sheet > tbody > tr.newpage { page-break-before: always; }
+table.sheet > tbody > tr > td {
+  vertical-align: top; padding: 3.4mm 2mm 3.4mm 0;
+  border-bottom: 0.4pt dotted #d0d0d0;
+}
+td.c-op     { width: 52mm; white-space: nowrap; }
+td.c-layout { width: 74mm; }
+td.c-meta   { width: 46mm; }
+td.c-check  { width: 20mm; white-space: nowrap; }
+
+tr.example > td { background: #fbfbfb; }
+.egtag { font-size: 6.5pt; text-transform: uppercase; letter-spacing: 0.4pt;
+         color: #b0b0b0; margin-bottom: 0.8mm; }
+.code { font-family: "DejaVu Sans Mono", Courier, monospace; font-size: 9pt; }
+.comment { font-family: "DejaVu Sans Mono", Courier, monospace; font-size: 7.5pt;
+           color: #8a8a8a; margin-top: 0.8mm; }
+.nacheck { color: #c0c0c0; font-size: 9pt; }
+
+/* light-blue array layout, as on the slides */
+table.layout { border-collapse: collapse; }
+table.layout td {
+  font-family: "DejaVu Sans Mono", Courier, monospace; font-size: 7.5pt; font-weight: bold;
+  color: #1f3864; background: #dce6f5; border: 0.5pt solid #b4c6e7;
+  text-align: center; min-width: 5.2mm; padding: 0.7mm 0.8mm;
+}
+
+/* grey metadata table, as on the slides */
+table.meta { border-collapse: collapse; width: 44mm; }
+table.meta th {
+  font-family: "DejaVu Sans Mono", Courier, monospace; font-size: 7.5pt; font-weight: bold;
+  text-align: left; background: #e8e8e8; border: 0.5pt solid #7f7f7f;
+  padding: 0.7mm 1.2mm; width: 15mm;
+}
+table.meta td {
+  font-family: "DejaVu Sans Mono", Courier, monospace; font-size: 7.5pt;
+  border: 0.5pt solid #7f7f7f; padding: 0.7mm 1.2mm; background: #fff;
+}
+table.meta td.blank { height: 6.4mm; }
+
+.cb { margin-bottom: 1.8mm; }
+.box { display: inline-block; width: 3.6mm; height: 3.6mm; border: 0.7pt solid #555;
+       text-align: center; font-size: 7.5pt; line-height: 3.6mm; margin-right: 1.6mm;
+       vertical-align: middle; }
+.cblabel { font-family: "DejaVu Sans Mono", Courier, monospace; font-size: 8pt;
+           vertical-align: middle; }
+
+/* --- solution sheet only --- */
+.cb.ticked .box { border-color: #c00000; color: #c00000; font-weight: bold; }
+.cb.ticked .cblabel { color: #c00000; font-weight: bold; }
+table.meta td.filled { color: #c00000; }
+tr.whyrow > td.why {
+  font-size: 7.5pt; color: #333; line-height: 1.35;
+  padding: 0 20mm 3.2mm 0; border-bottom: 0.4pt dotted #d0d0d0;
+  vertical-align: top;
+}
+tr.whyrow > td.why b { color: #000; }
+.answer { color: #c00000; font-weight: bold; }
+.keyrule { margin-top: 1.6mm; padding: 1.4mm 1.8mm; background: #f4f4f4;
+           border-left: 1.2pt solid #b0b0b0; font-size: 8pt; }
+/* keep an operation row glued to its explanation */
+table.sheet > tbody > tr.hasexplain > td { border-bottom: none; padding-bottom: 1.4mm; }
+table.sheet > tbody > tr.hasexplain { page-break-after: avoid; }
+</style></head>
+<body>
+<h1>Is it a view or a copy? &mdash; solutions</h1>
+<div class="intro">
+  Answers in <span class="answer">red</span>, with a short explanation under each row.
+  All metadata assumes <span class="mono">int64</span>, i.e. 8 bytes per item, and
+  strides are in <b>bytes</b>.
+  <div class="keyrule"><b>Rule of thumb:</b> NumPy can return a view whenever the
+  elements you asked for sit at a <i>constant step</i> (per axis) in the existing
+  memory block &mdash; that is what <span class="mono">strides</span> can express.
+  Basic slicing always yields such a pattern, so it gives views; fancy indexing
+  (integer or boolean arrays) always copies, even when the indices happen to be
+  regularly spaced.</div>
+</div>
+
+<table class="sheet">
+  <thead>
+    <tr><th class="memcell" colspan="4"><div class="memblock">
+      <div class="memlabel">The one memory block behind <span class="mono">x</span>
+        &mdash; 12 items of <span class="mono">int64</span>,
+        8 bytes each:</div>
+      <table class="membuf">
+        <tr class="vals"><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
+        <tr class="offs"><td>0</td><td>8</td><td>16</td><td>24</td><td>32</td><td>40</td><td>48</td><td>56</td><td>64</td><td>72</td><td>80</td><td>88</td></tr>
+      </table>
+      <div class="memnote">second row = byte offset of each item from the start of the block</div>
+    </div></th></tr>
+    <tr class="colheads">
+      <th class="h-op">NumPy operation</th>
+      <th class="h-layout">Array layout of <span class="mono">y</span></th>
+      <th class="h-meta">NumPy array metadata</th>
+      <th class="h-check">View or copy?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="example">
+      <td class="c-op"><div class="egtag">worked example</div><div class="code">x</div><div class="comment"># the original array</div></td>
+      <td class="c-layout"><table class="layout"><tbody><tr><td>0</td><td>1</td><td>2</td><td>3</td></tr>
+<tr><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+<tr><td>8</td><td>9</td><td>10</td><td>11</td></tr></tbody></table></td>
+      <td class="c-meta"><table class="meta"><tbody><tr><th>dtype</th><td class="filled">int64</td></tr>
+<tr><th>ndim</th><td class="filled">2</td></tr>
+<tr><th>shape</th><td class="filled">(3, 4)</td></tr>
+<tr><th>strides</th><td class="filled">(32, 8)</td></tr></tbody></table></td>
+      <td class="c-check"><div class="nacheck">&mdash;</div></td>
+    </tr>
+
+    <tr class="hasexplain">
+      <td class="c-op"><div class="code">y = x.reshape((6, 2))</div></td>
+      <td class="c-layout"><table class="layout"><tbody><tr><td>0</td><td>1</td></tr>
+<tr><td>2</td><td>3</td></tr>
+<tr><td>4</td><td>5</td></tr>
+<tr><td>6</td><td>7</td></tr>
+<tr><td>8</td><td>9</td></tr>
+<tr><td>10</td><td>11</td></tr></tbody></table></td>
+      <td class="c-meta"><table class="meta"><tbody><tr><th>dtype</th><td class="filled">int64</td></tr>
+<tr><th>ndim</th><td class="filled">2</td></tr>
+<tr><th>shape</th><td class="filled">(6, 2)</td></tr>
+<tr><th>strides</th><td class="filled">(16, 8)</td></tr></tbody></table></td>
+      <td class="c-check"><div class="cb ticked"><span class="box">&#10007;</span><span class="cblabel">view</span></div><div class="cb"><span class="box">&nbsp;</span><span class="cblabel">copy</span></div></td>
+    </tr>
+    <tr class="whyrow"><td colspan="4" class="why"><b>Why:</b> x is contiguous and the elements are needed in the same order, so only the shape/strides bookkeeping changes: walk 2 items (16 bytes) per row, 1 item (8 bytes) per column.</td></tr>
+    <tr class="hasexplain">
+      <td class="c-op"><div class="code">y = x[::2, :]</div></td>
+      <td class="c-layout"><table class="layout"><tbody><tr><td>0</td><td>1</td><td>2</td><td>3</td></tr>
+<tr><td>8</td><td>9</td><td>10</td><td>11</td></tr></tbody></table></td>
+      <td class="c-meta"><table class="meta"><tbody><tr><th>dtype</th><td class="filled">int64</td></tr>
+<tr><th>ndim</th><td class="filled">2</td></tr>
+<tr><th>shape</th><td class="filled">(2, 4)</td></tr>
+<tr><th>strides</th><td class="filled">(64, 8)</td></tr></tbody></table></td>
+      <td class="c-check"><div class="cb ticked"><span class="box">&#10007;</span><span class="cblabel">view</span></div><div class="cb"><span class="box">&nbsp;</span><span class="cblabel">copy</span></div></td>
+    </tr>
+    <tr class="whyrow"><td colspan="4" class="why"><b>Why:</b> A basic slice: keep every other row by doubling the row stride to 2&times;32 = 64 bytes. Regular steps are exactly what strides can express.</td></tr>
+    <tr class="hasexplain">
+      <td class="c-op"><div class="code">y = x[[1, 2, 0], [1, 1, 2]]</div></td>
+      <td class="c-layout"><table class="layout"><tbody><tr><td>5</td><td>9</td><td>2</td></tr></tbody></table></td>
+      <td class="c-meta"><table class="meta"><tbody><tr><th>dtype</th><td class="filled">int64</td></tr>
+<tr><th>ndim</th><td class="filled">1</td></tr>
+<tr><th>shape</th><td class="filled">(3,)</td></tr>
+<tr><th>strides</th><td class="filled">(8,)</td></tr></tbody></table></td>
+      <td class="c-check"><div class="cb"><span class="box">&nbsp;</span><span class="cblabel">view</span></div><div class="cb ticked"><span class="box">&#10007;</span><span class="cblabel">copy</span></div></td>
+    </tr>
+    <tr class="whyrow"><td colspan="4" class="why"><b>Why:</b> Fancy indexing picks elements at byte offsets 40, 72, 16 &mdash; not a constant step, so no single stride can reach them. NumPy must gather them into a new block.</td></tr>
+    <tr class="hasexplain">
+      <td class="c-op"><div class="code">y = x[[0, 2], :]</div><div class="comment"># get the first and third row</div></td>
+      <td class="c-layout"><table class="layout"><tbody><tr><td>0</td><td>1</td><td>2</td><td>3</td></tr>
+<tr><td>8</td><td>9</td><td>10</td><td>11</td></tr></tbody></table></td>
+      <td class="c-meta"><table class="meta"><tbody><tr><th>dtype</th><td class="filled">int64</td></tr>
+<tr><th>ndim</th><td class="filled">2</td></tr>
+<tr><th>shape</th><td class="filled">(2, 4)</td></tr>
+<tr><th>strides</th><td class="filled">(32, 8)</td></tr></tbody></table></td>
+      <td class="c-check"><div class="cb"><span class="box">&nbsp;</span><span class="cblabel">view</span></div><div class="cb ticked"><span class="box">&#10007;</span><span class="cblabel">copy</span></div></td>
+    </tr>
+    <tr class="whyrow"><td colspan="4" class="why"><b>Why:</b> Careful: rows 0 and 2 <i>are</i> evenly spaced, so a view would be expressible here (it is what <span class='mono'>x[::2, :]</span> returns). But this is fancy indexing, and NumPy always copies for fancy indexing &mdash; it does not inspect the index list to see whether it happens to be regular. The rule is about the <i>kind</i> of indexing, not the particular values.</td></tr>
+    <tr class="hasexplain">
+      <td class="c-op"><div class="code">y = x.ravel()</div></td>
+      <td class="c-layout"><table class="layout"><tbody><tr><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr></tbody></table></td>
+      <td class="c-meta"><table class="meta"><tbody><tr><th>dtype</th><td class="filled">int64</td></tr>
+<tr><th>ndim</th><td class="filled">1</td></tr>
+<tr><th>shape</th><td class="filled">(12,)</td></tr>
+<tr><th>strides</th><td class="filled">(8,)</td></tr></tbody></table></td>
+      <td class="c-check"><div class="cb ticked"><span class="box">&#10007;</span><span class="cblabel">view</span></div><div class="cb"><span class="box">&nbsp;</span><span class="cblabel">copy</span></div></td>
+    </tr>
+    <tr class="whyrow"><td colspan="4" class="why"><b>Why:</b> x is C-contiguous, so reading the block straight through in memory order already gives the flattened array: a 1-D view with an 8-byte stride.</td></tr>
+    <tr class="hasexplain">
+      <td class="c-op"><div class="code">y = x.T</div></td>
+      <td class="c-layout"><table class="layout"><tbody><tr><td>0</td><td>4</td><td>8</td></tr>
+<tr><td>1</td><td>5</td><td>9</td></tr>
+<tr><td>2</td><td>6</td><td>10</td></tr>
+<tr><td>3</td><td>7</td><td>11</td></tr></tbody></table></td>
+      <td class="c-meta"><table class="meta"><tbody><tr><th>dtype</th><td class="filled">int64</td></tr>
+<tr><th>ndim</th><td class="filled">2</td></tr>
+<tr><th>shape</th><td class="filled">(4, 3)</td></tr>
+<tr><th>strides</th><td class="filled">(8, 32)</td></tr></tbody></table></td>
+      <td class="c-check"><div class="cb ticked"><span class="box">&#10007;</span><span class="cblabel">view</span></div><div class="cb"><span class="box">&nbsp;</span><span class="cblabel">copy</span></div></td>
+    </tr>
+    <tr class="whyrow"><td colspan="4" class="why"><b>Why:</b> Transposing just swaps the two strides: step 8 bytes down a column and 32 bytes across a row. No data moves &mdash; the result is simply non-contiguous.</td></tr>
+    <tr class="hasexplain">
+      <td class="c-op"><div class="code">y = x.T.ravel()</div></td>
+      <td class="c-layout"><table class="layout"><tbody><tr><td>0</td><td>4</td><td>8</td><td>1</td><td>5</td><td>9</td><td>2</td><td>6</td><td>10</td><td>3</td><td>7</td><td>11</td></tr></tbody></table></td>
+      <td class="c-meta"><table class="meta"><tbody><tr><th>dtype</th><td class="filled">int64</td></tr>
+<tr><th>ndim</th><td class="filled">1</td></tr>
+<tr><th>shape</th><td class="filled">(12,)</td></tr>
+<tr><th>strides</th><td class="filled">(8,)</td></tr></tbody></table></td>
+      <td class="c-check"><div class="cb"><span class="box">&nbsp;</span><span class="cblabel">view</span></div><div class="cb ticked"><span class="box">&#10007;</span><span class="cblabel">copy</span></div></td>
+    </tr>
+    <tr class="whyrow"><td colspan="4" class="why"><b>Why:</b> Flattening x.T needs the elements in the order 0, 4, 8, 1, 5, 9, ... i.e. byte offsets 0, 32, 64, 8, ... That jumps backwards, so it is not a constant step and no stride can produce it. A copy is unavoidable.</td></tr>
+  </tbody>
+</table>
+</body></html>
