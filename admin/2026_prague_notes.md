@@ -18,6 +18,7 @@
 
 ## NumPy
 - Use rectangular matrices when using examples with reshape
+- Verjinia is going to change the figures to use the same style for memory blocks as in Tiziano's slides
 
 ## Tabular
 - Need to explain what is tabular data first of all
